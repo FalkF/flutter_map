@@ -67,7 +67,11 @@ class OnTapPageState extends State<OnTapPage> {
             )),
       ),
     ];
-
+    var points = <LatLng>[
+      LatLng(51.5, -0.09),
+      LatLng(53.3498, -6.2603),
+      LatLng(48.8566, 2.3522),
+    ];
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(title: Text('OnTap')),
@@ -93,7 +97,15 @@ class OnTapPageState extends State<OnTapPage> {
                       urlTemplate:
                           'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                       subdomains: ['a', 'b', 'c']),
-                  MarkerLayerOptions(markers: markers)
+                  MarkerLayerOptions(markers: markers),
+                  PolylineLayerOptions(
+                    polylines: [
+                      Polyline(
+                          points: points,
+                          strokeWidth: 4.0,
+                          color: Colors.purple),
+                    ],
+                  )
                 ],
               ),
             ),
